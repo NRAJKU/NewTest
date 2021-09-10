@@ -1,0 +1,38 @@
+format_version: 10
+
+pipelines:
+  My-New-Pipeline:
+    group: MyGroup
+    label_template: 1
+    lock_behavior: none
+    display_order: -1
+    environment_variables:
+      HELLO: hello
+    materials:
+      GIT_MATERIAL:
+        git: https://github.com/NRAJKU/NewTest.git
+        shallow_clone: false
+        auto_update: false
+        branch: master
+    stages:
+      - Test-and-Run:
+          fetch_materials: true
+          keep_artifacts: false
+          clean_workspace: true
+          approval:
+            type: success
+            allow_only_on_success: false
+          jobs:
+            stock-search_mocks_build:
+              timeout: 0
+              resources:
+                - ci-aws
+              tasks:
+                run-and-test: &run-and-test
+                  - exec:
+                      run_if: any
+                      command: /bin/bash
+                      arguments:
+                        - -c
+                        - >
+                          /bin/echo hello"

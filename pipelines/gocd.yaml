@@ -35,12 +35,12 @@ pipelines:
                       arguments:
                         - -c
                         - >
-                          /bin/echo hello"
-                  run-and-test2: &run-and-test
+                          /bin/echo "hello"
+                run-and-test2: &run-and-test2
                   - exec:
                       run_if: any
                       command: /bin/bash
                       arguments:
                         - -c
                         - >
-                          /bin/echo hello"
+                          /bin/echo "Jello"

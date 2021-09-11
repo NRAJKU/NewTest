@@ -34,11 +34,10 @@ pipelines:
     lock_behavior: none
     display_order: -1
     materials:
-      git-b8df1cb:
-        git: https://github.com/NRAJKU/NewTest.git
-        shallow_clone: false
-        auto_update: true
-        branch: master
+      My-New-Pipeline:
+        ignore_for_scheduling: false
+        pipeline: My-New-Pipeline
+        stage: change_detection_guard
     stages:
     - Test-and-Run:
         fetch_materials: true

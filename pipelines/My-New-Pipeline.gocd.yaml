@@ -1,42 +1,58 @@
 format_version: 10
-
 pipelines:
   My-New-Pipeline:
     group: defaultGroup
-    label_template: 1
+    label_template: ${COUNT}
     lock_behavior: none
     display_order: -1
-    environment_variables:
-      HELLO: hello
     materials:
-      GIT_MATERIAL:
+      git-b8df1cb:
         git: https://github.com/NRAJKU/NewTest.git
         shallow_clone: false
-        auto_update: false
+        auto_update: true
         branch: master
     stages:
-      - Test-and-Run:
-          fetch_materials: true
-          keep_artifacts: false
-          clean_workspace: true
-          approval:
-            type: success
-            allow_only_on_success: false
-          jobs:
-            run-and-test:
-              timeout: 0
-              tasks:
-                  - exec:
-                      run_if: passed
-                      command: echo
-                      arguments:
-                        - hello
-
-            run-and-test-2:
-              timeout: 0
-              tasks:
-                  - exec:
-                      run_if: passed
-                      command: echo
-                      arguments:
-                        - hello
+    - Test-and-Run:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          run-and-test:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - hello
+                command: echo
+                run_if: passed
+  My-New-Pipeline-2:
+    group: defaultGroup
+    label_template: ${COUNT}
+    lock_behavior: none
+    display_order: -1
+    materials:
+      git-b8df1cb:
+        git: https://github.com/NRAJKU/NewTest.git
+        shallow_clone: false
+        auto_update: true
+        branch: master
+    stages:
+    - Test-and-Run:
+        fetch_materials: true
+        keep_artifacts: false
+        clean_workspace: false
+        approval:
+          type: success
+          allow_only_on_success: false
+        jobs:
+          run-and-test:
+            timeout: 0
+            tasks:
+            - exec:
+                arguments:
+                - hello
+                command: echo
+                run_if: passed

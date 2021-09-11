@@ -55,3 +55,8 @@ pipelines:
                 - hello
                 command: echo
                 run_if: passed
+            - exec:
+                arguments:
+                - hello
+                command: echo
+                run_if: passed

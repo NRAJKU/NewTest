@@ -37,7 +37,7 @@ pipelines:
       My-New-Pipeline:
         ignore_for_scheduling: false
         pipeline: My-New-Pipeline
-        stage: change_detection_guard
+        stage: Test-and-Run
     stages:
     - Test-and-Run:
         fetch_materials: true

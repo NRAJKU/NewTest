@@ -28,7 +28,7 @@ pipelines:
                 - hello
                 command: echo
                 run_if: passed
-  My-New-Pipeline-2:
+  My-New-Pipeline_2:
     group: defaultGroup
     label_template: ${COUNT}
     lock_behavior: none

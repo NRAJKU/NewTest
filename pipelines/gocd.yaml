@@ -23,24 +23,20 @@ pipelines:
             type: success
             allow_only_on_success: false
           jobs:
-            stock-search_mocks_build:
+            run-and-test:
               timeout: 0
-              resources:
-                - ci-aws
               tasks:
-                run-and-test: &run-and-test
                   - exec:
-                      run_if: any
-                      command: /bin/bash
+                      run_if: passed
+                      command: echo
                       arguments:
-                        - -c
-                        - >
-                          /bin/echo "hello"
-                run-and-test2: &run-and-test2
+                        - hello
+
+            run-and-test-2:
+              timeout: 0
+              tasks:
                   - exec:
-                      run_if: any
-                      command: /bin/bash
+                      run_if: passed
+                      command: echo
                       arguments:
-                        - -c
-                        - >
-                          /bin/echo "Jello"
+                        - hello
